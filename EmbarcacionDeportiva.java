@@ -24,6 +24,6 @@ public class EmbarcacionDeportiva extends Barco
      */
     @Override
     public String toString() {
-        return toString() + " Potencia:" + potencia;
+        return super.toString() + " Potencia:" + potencia;
     }
 }

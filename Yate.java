@@ -24,6 +24,6 @@ public class Yate extends EmbarcacionDeportiva
      */
     @Override
     public String toString() {
-        return toString() + " Camarotes:" + camarotes;
+        return super.toString() + " Camarotes:" + camarotes;
     }
 }
