@@ -18,7 +18,7 @@ public class Puerto
     public int addAlquiler(int numeroDias, Cliente cliente, Barco barco) {
         int i = 0;
         boolean addBarco = false;
-        while(!addBarco || i<amarres.length) {
+        while(!addBarco && i<amarres.length) {
             if(amarres[i] == null) {
                 amarres[i] = new Alquiler(numeroDias,cliente,barco);
                 addBarco = true;
@@ -48,13 +48,18 @@ public class Puerto
             }
         }
     }
-    
+
     /**
      * Acaba el alquiler de uno de los amarres
      */
     public float liquidarAlquiler(int posicion){
-        float precio = amarres[posicion].getCosteAlquiler();
-        amarres[posicion] = null;
-        return precio;
+        float valor = -1;
+        if(posicion < NUMERO_AMARRES && posicion >= 0){
+            if(amarres[posicion] != null){
+                valor = amarres[posicion].getCosteAlquiler();
+                amarres[posicion] = null;
+            }
+        }
+        return valor;
     }
 }
