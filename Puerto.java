@@ -16,16 +16,21 @@ public class Puerto
      * (-1 si no se añade)
      */
     public int addAlquiler(int numeroDias, Cliente cliente, Barco barco) {
-        Alquiler alquiler = new Alquiler(numeroDias,cliente,barco);
         int i = 0;
         boolean addBarco = false;
         while(!addBarco || i<amarres.length) {
             if(amarres[i] == null) {
-                amarres[i] = alquiler;
+                amarres[i] = new Alquiler(numeroDias,cliente,barco);
+                addBarco = true;
             }
-            i++;
+            else {
+                i++;
+            }
         }
-        return 1;
+        if(!addBarco) {
+            i = -1;
+        }
+        return i;    
     }
 
     /**
@@ -42,5 +47,12 @@ public class Puerto
                 System.out.println("Precio: " + amarres[i].getCosteAlquiler());
             }
         }
+    }
+    
+    /**
+     * Acaba el alquiler de uno de los amarres
+     */
+    public void liquidarAlquiler(int posicion){
+        amarres[posicion] = null;
     }
 }
