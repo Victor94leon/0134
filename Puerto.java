@@ -52,7 +52,9 @@ public class Puerto
     /**
      * Acaba el alquiler de uno de los amarres
      */
-    public void liquidarAlquiler(int posicion){
+    public float liquidarAlquiler(int posicion){
+        float precio = amarres[posicion].getCosteAlquiler();
         amarres[posicion] = null;
+        return precio;
     }
 }
